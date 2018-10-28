@@ -91,7 +91,8 @@ for i in range(len(eigenvalue_index)):
 
 data_mapped=K.dot(featurevector_sort_normal)
 print('pca变换后')
-plt.scatter(data_mapped[:,0], data_mapped[:,1], s=5)
+plt.scatter(data_mapped[0:127,0], data_mapped[0:127,1], s=5,c='g')
+plt.scatter(data_mapped[128:255,0], data_mapped[128:255,1], s=5,c='b')
 plt.show() 
 
 

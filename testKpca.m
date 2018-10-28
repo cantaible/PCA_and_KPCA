@@ -11,12 +11,13 @@ disp('开始计算');
 X=data;
 N = size(X,1); %行数，即为数据个数
 DIST=zeros(N,N);
-for i=1:N
-    for j=1:N
-        diff=X(i,:)-X(j,:);
-        DIST(i,j)=diff*diff';
-    end
-end
+%for i=1:N
+%    for j=1:N
+%        diff=X(i,:)-X(j,:);
+%        DIST(i,j)=diff*diff';
+%    end
+%end
+DIST=pdist(X);
 DIST(DIST==0)=inf;
 %inf为无穷大
 DIST1=min(DIST);
@@ -59,5 +60,6 @@ eigVector=eigVector(:,1:2);
 Y3=K*eigVector;
 figure;
 hold on;
-plot(Y3(1:end,1),Y3(1:end,2),'b*');
+plot(Y3(1:128,1),Y3(1:128,2),'b*');
+plot(Y3(129:end,1),Y3(129:end,2),'ro');
 drawnow;
