@@ -37,6 +37,7 @@ c=data_mean.T.dot(data_mean)
 
 #求c的特征值和特征向量
 eigenvalue,featurevector=np.linalg.eig(c)
+
 #featurevector=featurevector.T
 #featurevector的每一行为一个特征向量
 #featurevector=[[-0.7071067812,-0.7071067812],[0.7071067812,-0.7071067812]]
@@ -54,5 +55,7 @@ print('pca变换前')
 plt.scatter(data[:,0], data[:,1], s=5) 
 plt.show()    
 print('pca变换后')
-plt.scatter(data_mapped[:,0], data_mapped[:,1], s=5)
+#plt.scatter(data_mapped[:,0], data_mapped[:,1], s=5)
+plt.scatter(data_mapped[0:127,0], data_mapped[0:127,1], s=5,c='g')
+plt.scatter(data_mapped[128:255,0], data_mapped[128:255,1], s=5,c='b')
 plt.show() 

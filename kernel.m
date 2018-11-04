@@ -19,13 +19,23 @@ DIST(DIST==0)=inf;
 DIST1=min(DIST);
 sigma_kernel=5*mean(DIST1);
 K = zeros(N);
-for i = 1:N
-    for j = i:N
-        diff_ij = X(i,:)-X(j,:);
-        K(i,j) = exp(-diff_ij*diff_ij'/2/sigma_kernel^2);
+
+tmp = zeros(N,N);
+        for i = 1:N
+            for j = 1:N
+                tmp(i,j) = norm(X(i,:)-X(j,:));
+            end
+        end   
+        K = exp(-0.5*(tmp/sigma_kernel).^2);
+
+
+%for i = 1:N
+    %for j = 1:N
+        %diff_ij = X(i,:)-X(j,:);
+        %K(i,j) = exp(-diff_ij*diff_ij'/2/sigma_kernel^2);
         %得到一个数
-        if i~=j
-            K(j,i) = K(i,j);
-        end
-    end
-end
+        %if i~=j
+            %K(j,i) = K(i,j);
+        %end
+    %end
+%end
